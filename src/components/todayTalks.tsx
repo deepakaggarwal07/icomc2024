@@ -1,6 +1,8 @@
 import React,{useEffect,useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Talk from './talk';
+import AntDesign from 'react-native-vector-icons/AntDesign';
+
 
 
 import {
@@ -109,7 +111,7 @@ function TodayTalks(props:Props): React.JSX.Element {
                 borderRadius: 100,
                 }}
             >
-                <Text>SR</Text>
+                <AntDesign size={30} color="#900" name='search1' />
                 
             </TouchableOpacity>
         </View></SafeAreaView>
