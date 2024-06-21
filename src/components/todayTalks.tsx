@@ -93,7 +93,6 @@ function TodayTalks(props:Props): React.JSX.Element {
                             <Text>No data available</Text>
                         )
                 }
-        
             </ScrollView>
             <TouchableOpacity
                 onPress={() => props.navigation.navigate('Search')}
