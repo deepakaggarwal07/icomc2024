@@ -90,7 +90,7 @@ function TodayTalks(props:Props): React.JSX.Element {
                         </TouchableOpacity>
                         )
                     )):(
-                            <Text>No data available</Text>
+                            <Text style={styles.label}>No data available</Text>
                         )
                 }
             </ScrollView>
@@ -137,6 +137,10 @@ const styles = StyleSheet.create({
         textAlignVertical:'center',
         paddingTop:5
     },
+    label: {
+        margin: 12,width:'90%',
+        padding: 10,
+      },
 });
 
 

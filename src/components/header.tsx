@@ -2,8 +2,9 @@ import React from 'react';
 import {Image} from 'react-native';
 
 function Header(){
-    return (
-        <Image source={require('../assets/icomc.png')} />
+    return 
+    (
+        <Image source={require('../../src/assets/icomc.png')} style={{marginTop:20}} />
     );
 }
 

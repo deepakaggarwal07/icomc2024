@@ -74,7 +74,7 @@ function SearchScreen(props:Props): React.JSX.Element {
                     )
                 )):
                 (
-                    <Text>No data available</Text>
+                    <Text style={styles.label}>No data available</Text>
                 )
             }
             </ScrollView>
@@ -94,6 +94,10 @@ function SearchScreen(props:Props): React.JSX.Element {
         padding: 10,
         borderRadius:6,
         
+      },
+      label: {
+        margin: 12,width:'90%',
+        padding: 10,
       },
 });
 

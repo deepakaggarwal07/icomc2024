@@ -13,7 +13,7 @@ import HomeScreen from './src/components/homeScreen';
 import SearchScreen from './src/components/searchScreen';
 import DetailScreen from './src/components/detailScreen';
 import TodayTalks from './src/components/todayTalks';
-    
+import Header from './src/components/header';
 
 import {
     Image,
@@ -43,25 +43,25 @@ function App(): React.JSX.Element {
             name="Details"
             component={DetailScreen}
             options={{
-              gestureEnabled: false,
+                title:'ICOMC 2024',
+              /*gestureEnabled: false,
               headerShown: true,
               header:()=>(
                   <View style={{ height: 100,paddingTop:25 }}>
                       <Image source={require('./src/assets/icomc.png')} style={{height:70, resizeMode:'contain'}} />
                   </View>
-                ),
-              
+                ),*/
             }}
           />
           
           <Stack.Screen name="Home" component={TodayTalks}  options={{
               gestureEnabled: false,
               headerShown: true,
-              header:()=>(
+              /*header:()=>(
                   <View style={{ height: 100,paddingTop:25 }}>
-                      <Image source={require('./src/assets/icomc.png')} style={{height:70, resizeMode:'contain'}} />
+                        <Image source={require('./src/assets/icomc.png')} style={{height:70, resizeMode:'contain'}} />
                   </View>
-                ),
+                ),*/
               
             }} />
         </Stack.Navigator>
