@@ -13,7 +13,7 @@ import {
     View
   } from 'react-native';
 
-function SearchScreen(props:Props): React.JSX.Element {
+function SearchScreen(): React.JSX.Element {
     const [data, setData] = useState([]);  
 
     const fetchData = async (srch_txt: string) => {
@@ -59,19 +59,12 @@ function SearchScreen(props:Props): React.JSX.Element {
                 Array.isArray(data) && data.length > 0 ? 
                 (
                     data
-                    .map((item:{
-                        talk_title:string;
-                        first_name:string;
-                        last_name:string;
-                        session_room:string;
-                        talk_time:string;
-                    },index) => (
-                    <TouchableOpacity
-                        key={index}
-                        onPress={() => props.navigation.navigate('Details',{ item:item })}>
-                        <Talk talkName={item.talk_title} personName={item.first_name +" "+item.last_name} hallNo={item.session_room} startTime={item.talk_time}></Talk>
-                    </TouchableOpacity>
-                    )
+                        .map((item:any,index) => (
+                            <Talk 
+                                key={index}
+                                talkInfo={item}>
+                            </Talk>
+                        )
                 )):
                 (
                     <Text style={styles.label}>No data available</Text>

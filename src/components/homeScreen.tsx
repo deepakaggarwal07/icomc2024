@@ -18,7 +18,7 @@ import {
     Alert
   } from 'react-native';
 
-function HomeScreen(props:Props): React.JSX.Element {
+function HomeScreen(props: { navigation: { navigate: (arg0: string) => void; }; }): React.JSX.Element {
 
     const storeUser = async (value: any) => {
         try {
@@ -50,7 +50,7 @@ function HomeScreen(props:Props): React.JSX.Element {
             <View style={{ height: 100,paddingTop:25 }}>
                 <Image source={require('../assets/icomc.png')} style={{height:70, resizeMode:'contain'}} />
             </View>
-            <Text style={styles.pgTitle}>Programm Guide for ICOMC 2024</Text>
+            <Text style={styles.pgTitle}>Programme Guide for ICOMC 2024</Text>
             
             <View style={styles.fixToText}>
             

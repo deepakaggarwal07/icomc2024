@@ -28,11 +28,13 @@ const styles = StyleSheet.create({
         width:50,
         height:50,
         borderRadius:25,
+        
         backgroundColor:'#cccccc',
         justifyContent: 'center', //Centered vertically
         alignItems: 'center', //Centered horizontally
-        marginRight:16
+        marginRight:10
     },
+    
     nameText: {
       textAlign:'center',
         verticalAlign:'middle',
@@ -42,21 +44,64 @@ const styles = StyleSheet.create({
       fontSize: 20,
       fontWeight: 'bold',
     },
+    heading:{
+        fontSize:13,
+        color:"#757575",
+    },
+    itemInfoView:{
+        borderLeftColor:'#2c94f5',
+        borderLeftWidth:1,
+        paddingLeft:8,
+        
+    },
+    chairPerson:{
+        fontSize:20,
+        maxWidth:'98%',
+        lineHeight: 26,
+    },
+    talkBy:{
+        fontSize:18,
+        lineHeight: 24,
+    },
+    talkTime:{
+        fontSize:15,
+        lineHeight: 20,
+        paddingBottom:8
+    },
+    talkTitle:{
+        fontSize:13,
+        lineHeight: 18,
+        maxWidth: '90%'
+    },
+    sessionCode:{
+        lineHeight: 22,
+        borderBottomWidth:5,
+        borderBottomColor:'#2c94f5'
+    }
   });
 
 
-const Talk = props => {
-    let x=props.personName.split(" ");
-    const baseName=x[0][0]+x[x.length-1][0];
+const Talk = ( props: { talkInfo: { first_name: string; last_name: string; 
+    chair_first_name: string; chair_last_name: string; 
+        talk_title: string; session_room: string ; 
+        talk_time: string ; session_code:string;
+    }; }) => {
+    //let x=props.talkInfo.first_name.split(" ");
+    const baseName=props.talkInfo.first_name[0]+props.talkInfo.last_name[0];
     return (
         <View style={styles.baseView}>
             <View style={styles.nameView}>
                 <Text style={styles.nameText}>{baseName}</Text>
             </View>
-            <View>
-                <Text style={{ maxWidth: '90%' }}>{props.talkName}</Text>
-                <Text>{props.personName}</Text>
-                <Text>Room : {props.hallNo} at {props.startTime}</Text>
+            <View style={styles.itemInfoView}>
+                <Text style={styles.heading}>Chair Person</Text>
+                <Text style={styles.chairPerson}>{props.talkInfo.chair_first_name +" "+ props.talkInfo.chair_last_name}</Text>
+                <Text style={styles.sessionCode}>Session Code : <Text style={{fontWeight: "bold"}}>{props.talkInfo.session_code}</Text></Text>
+                
+                <Text style={styles.talkBy}>{props.talkInfo.first_name +" "+ props.talkInfo.last_name}</Text>
+                <Text style={styles.talkTime}>{props.talkInfo.session_room} :: {props.talkInfo.talk_time}</Text>
+
+                <Text style={styles.talkTitle}>{props.talkInfo.talk_title}</Text>
             </View>
             
 
