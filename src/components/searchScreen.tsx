@@ -17,7 +17,6 @@ function SearchScreen(): React.JSX.Element {
     const [data, setData] = useState([]);  
 
     const fetchData = async (srch_txt: string) => {
-        
         try 
         {
             const savedUser = await AsyncStorage.getItem("user");
@@ -27,8 +26,10 @@ function SearchScreen(): React.JSX.Element {
                 const filteredData = Array.from(eventData).filter(item => (
                     item.first_name.indexOf(srch_txt) >= 0 ||
                     item.last_name.indexOf(srch_txt) >= 0 ||
-                    item.chair_first_name.indexOf(srch_txt) >= 0 ||
-                    item.chair_last_name.indexOf(srch_txt) >= 0 ||
+                    item.chair_first_name_1.indexOf(srch_txt) >= 0 ||
+                    item.chair_last_name_1.indexOf(srch_txt) >= 0 ||
+                    item.chair_first_name_2.indexOf(srch_txt) >= 0 ||
+                    item.chair_last_name_2.indexOf(srch_txt) >= 0 ||
                     item.talk_title.indexOf(srch_txt) >= 0
                   ));
                 if(filteredData.length>0)
@@ -50,10 +51,13 @@ function SearchScreen(): React.JSX.Element {
 
     return (
     <SafeAreaView  style={{ height: '100%', width:'100%' }}>
-        <View style={{ flex: 1, alignItems: 'center',flexDirection: 'column' }}>   
+        <View style={{ flex: 1, alignItems: 'center',flexDirection: 'column',paddingStart:10,
+        paddingEnd:20, }}>   
         <TextInput 
+            placeholder='Search by Presender/ Chair Person/ Talk title'
+            placeholderTextColor='#fff'
             onChangeText={newText => fetchData(newText)}
-            style={styles.input}></TextInput>
+            style={styles.inputStyle}></TextInput>
             <ScrollView style={{ width:'100%' }}>
             {
                 Array.isArray(data) && data.length > 0 ? 
@@ -80,13 +84,14 @@ function SearchScreen(): React.JSX.Element {
 
   const styles = StyleSheet.create({
     
-    input: {
+    inputStyle: {
         height: 40,
-        margin: 12,width:'90%',
+        margin: 6,width:'100%',
         borderWidth: 1,
         padding: 10,
         borderRadius:6,
-        
+        backgroundColor:"#000",
+        color:"#fff"
       },
       label: {
         margin: 12,width:'90%',

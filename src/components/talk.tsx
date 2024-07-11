@@ -75,19 +75,25 @@ const styles = StyleSheet.create({
     },
     sessionCode:{
         lineHeight: 22,
-        borderBottomWidth:5,
-        borderBottomColor:'#2c94f5'
     }
   });
 
 
 const Talk = ( props: { talkInfo: { first_name: string; last_name: string; 
-    chair_first_name: string; chair_last_name: string; 
+    chair_first_name_1: string; chair_last_name_1: string; chair_affiliation_1: string; 
+    chair_first_name_2: string; chair_last_name_2: string; chair_affiliation_2: string; 
         talk_title: string; session_room: string ; 
         talk_time: string ; session_code:string;
     }; }) => {
     //let x=props.talkInfo.first_name.split(" ");
     const baseName=props.talkInfo.first_name[0]+props.talkInfo.last_name[0];
+    let chairPerson=props.talkInfo.chair_first_name_1 +" "+ props.talkInfo.chair_last_name_1;
+    let aff=props.talkInfo.chair_affiliation_1;
+    if(props.talkInfo.chair_first_name_2!="")
+    {
+        chairPerson+=", "+props.talkInfo.chair_first_name_2+" "+props.talkInfo.chair_last_name_2
+        aff+=", "+props.talkInfo.chair_affiliation_2;
+    }
     return (
         <View style={styles.baseView}>
             <View style={styles.nameView}>
@@ -95,8 +101,10 @@ const Talk = ( props: { talkInfo: { first_name: string; last_name: string;
             </View>
             <View style={styles.itemInfoView}>
                 <Text style={styles.heading}>Chair Person</Text>
-                <Text style={styles.chairPerson}>{props.talkInfo.chair_first_name +" "+ props.talkInfo.chair_last_name}</Text>
+                <Text style={styles.chairPerson}>{chairPerson}</Text>
+                <Text style={styles.heading}>{aff}</Text>
                 <Text style={styles.sessionCode}>Session Code : <Text style={{fontWeight: "bold"}}>{props.talkInfo.session_code}</Text></Text>
+                
                 
                 <Text style={styles.talkBy}>{props.talkInfo.first_name +" "+ props.talkInfo.last_name}</Text>
                 <Text style={styles.talkTime}>{props.talkInfo.session_room} :: {props.talkInfo.talk_time}</Text>

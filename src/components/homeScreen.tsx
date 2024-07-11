@@ -29,12 +29,19 @@ function HomeScreen(props: { navigation: { navigate: (arg0: string) => void; }; 
         }
       };
 
+    const storePoster = async (value: any) => {
+        try {
+          await AsyncStorage.setItem("poster", JSON.stringify(value));
+        } catch (error) 
+        {
+          console.log(error);
+        }
+      };
+
     useEffect(() => {
-        /*setTimeout(() => {
-            props.navigation.navigate('Home'); 
-        }, 5000); */
         
-        fetch("https://client-demo.in/force/icomc/api/get-data.php").then((res)=>{
+        
+        fetch("https://force-india.com/icomc/api/get-data.php").then((res)=>{
             return res.json();
         }).then((data)=>{
             storeUser(data);
@@ -42,6 +49,16 @@ function HomeScreen(props: { navigation: { navigate: (arg0: string) => void; }; 
             
             console.error(error); 
         });
+
+        fetch("https://force-india.com/icomc/api/get-poster.php").then((res)=>{
+            return res.json();
+        }).then((data)=>{
+            storePoster(data);
+        }).catch((error) => { 
+            
+            console.error(error); 
+        });
+
       },[props.navigation])
 
 
@@ -51,14 +68,21 @@ function HomeScreen(props: { navigation: { navigate: (arg0: string) => void; }; 
                 <Image source={require('../assets/icomc.png')} style={{height:70, resizeMode:'contain'}} />
             </View>
             <Text style={styles.pgTitle}>Programme Guide for ICOMC 2024</Text>
-            
             <View style={styles.fixToText}>
-            
                 <Button  onPress={() => props.navigation.navigate('Home')} title="Today's Talk" />
                 <Button onPress={() => props.navigation.navigate('Search')} title="Search Talk" />
             </View>
+            
+            <View style={styles.fixToText}>
+                <Button  onPress={() => props.navigation.navigate('AtGlance')} title="At a Glance" />
+                <Button  onPress={() => props.navigation.navigate('Map')} title="Hotel Map" />
+            </View>
+
+            <View style={styles.fixToText}>
+                <Button  onPress={() => props.navigation.navigate('Poster')} title="Posters List" />
+            </View>
             <View style={styles.bottomView}>
-                <TouchableOpacity onPress={() => Linking.openURL('https://www.delve-serwiz.com/icomc2024/privacy-poilicy.php')}>
+                <TouchableOpacity onPress={() => Linking.openURL('https://force-india.com/icomc/privacy-policy.php')}>
                     <Text>Privacy Policy</Text>
                 </TouchableOpacity>
                 <View

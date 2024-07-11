@@ -39,12 +39,9 @@ function TodayTalks(props: { navigation: { navigate: (arg0: string) => void; }; 
     const shortMonth = currentDate.toLocaleString('default', { month: 'short' });
     const shortYear = year.toString().substring(2);;
 
-    //const dt=day+nth(day)+" "+month+" "+year;
+    //const dt=day+"-"+month+"-"+shortYear;
     
-    const dt="14-Jul-24"
-    //const srch_dt=dt;
-    
-    //const [srch_dt, setValue] = useState(dt);
+    const dt="14-Jul-24";
     const [value, setValue] = useState(dt);
     
     const filterData = async (srch_dt : any) => {
@@ -107,38 +104,18 @@ function TodayTalks(props: { navigation: { navigate: (arg0: string) => void; }; 
                     
                     <Dropdown
                         style={[styles.dropdown]}
-                        /*placeholderStyle={styles.placeholderStyle}
-                        selectedTextStyle={styles.selectedTextStyle}
-                        inputSearchStyle={styles.inputSearchStyle}
-                        iconStyle={styles.iconStyle}*/
                         data={ddlData}
-                        
                         maxHeight={300}
                         onChange={item => {
                             setValue(item.value);
                             fetchData();
-                            //filterData(item.value);
                           }}
                         labelField="label"
                         valueField="value"
                         placeholder={'Select Date'}
                         searchPlaceholder="Search..."
                         value={value==null?dt :value}
-                        
-                        
-                        
                         />
-                        {/* 
-                        <Text style={styles.headViewDate}>{dt}</Text>
-
-
-                        <TouchableOpacity
-                            key={index}
-                            onPress={() => props.navigation.navigate('Details',{ item:item })}>
-                            <Talk talkName={item.talk_title} personName={item.first_name +" "+item.last_name} hallNo={item.session_room} startTime={item.talk_time}></Talk>
-                        </TouchableOpacity>
-                        */}
-                    
                 </View>
                 {
                     Array.isArray(data) && data.length > 0 ? 

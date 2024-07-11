@@ -14,11 +14,14 @@ import SearchScreen from './src/components/searchScreen';
 import DetailScreen from './src/components/detailScreen';
 import TodayTalks from './src/components/todayTalks';
 import Header from './src/components/header';
+import MapScreen from './src/components/mapScreen';
 
 import {
     Image,
     View,
   } from 'react-native';
+import GlanceScreen from './src/components/glanceScreen';
+import PosterScreen from './src/components/posterScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +54,30 @@ function App(): React.JSX.Element {
                       <Image source={require('./src/assets/icomc.png')} style={{height:70, resizeMode:'contain'}} />
                   </View>
                 ),*/
+            }}
+          />
+
+        <Stack.Screen
+            name="Map"
+            component={MapScreen}
+            options={{
+                title:'Hotel Map',
+            }}
+          />
+
+        <Stack.Screen
+            name="AtGlance"
+            component={GlanceScreen}
+            options={{
+                title:'At a Glance',
+            }}
+          />
+
+        <Stack.Screen
+            name="Poster"
+            component={PosterScreen}
+            options={{
+                title:'Poster List',
             }}
           />
           
